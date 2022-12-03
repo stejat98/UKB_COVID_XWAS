@@ -1,3 +1,12 @@
+## Sivateja Tangirala
+
+# The following script appends hospitalization and death outcome data to the original input dataframe (consisting of exposures, outcome of COVID-19 positivity
+# and baseline covariates adjusted for during the analysis).
+
+## assumes all input dfs used for script are in same directory ~/UKB_COVID19/
+
+
+
 library(tidyverse)
 library(dummies)
 
