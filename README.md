@@ -13,7 +13,7 @@ b. Run `ProcessingData` scripts
 
 c. Run `RunningModels` scripts
 
-d. Run `Processin Results` scripts
+d. Run `ProcessingResults` scripts
 
 Reproduce Main Figures:
 
