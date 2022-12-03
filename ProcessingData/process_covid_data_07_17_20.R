@@ -6,13 +6,11 @@
 ## assumes all input dfs used for script are in same directory ~/UKB_COVID19/
 
 
-
-
 library(tidyverse)
 
 library(RNOmni)
 
-data <- readRDS("/n/groups/patel/sivateja/UKB/COVID19/covid_death_ukb9512_full_40GPCs_updated_07_17_2020.RDS")
+data <- readRDS("covid_death_ukb9512_full_40GPCs_updated_07_17_2020.RDS")
 
 
 biomarkers_colnames <- colnames(data)[grep("median_",colnames(data))]
@@ -40,13 +38,13 @@ for (aa in 1:length(infectious_factors))
 }
 
 
-saveRDS(data,"/n/groups/patel/sivateja/UKB/COVID19/covid_death_ukb9512_full_40GPCs_updated_07_17_20_processed.RDS")
+saveRDS(data,"covid_death_ukb9512_full_40GPCs_updated_07_17_20_processed.RDS")
 
 
 ## biomarkers first and last measurement merge
 
-biomarkers_first_and_last_measurement_processed <- readRDS("/n/groups/patel/sivateja/UKB/COVID19/biomarkers_first_and_last_measurement_processed.RDS")
-data <- readRDS("/n/groups/patel/sivateja/UKB/COVID19/covid_death_ukb9512_full_40GPCs_updated_07_17_20_processed.RDS")
+biomarkers_first_and_last_measurement_processed <- readRDS("biomarkers_first_and_last_measurement_processed.RDS")
+data <- readRDS("covid_death_ukb9512_full_40GPCs_updated_07_17_20_processed.RDS")
 
 data_with_biomarkers_first_and_last_measurement_07_17_20 <- left_join(data,biomarkers_first_and_last_measurement_processed, by = "eid")
 
@@ -65,6 +63,6 @@ for (a in 1:length(biomarkers_colnames))
 
 data_with_biomarkers_first_and_last_measurement_07_17_20 <- data
 
-saveRDS(data_with_biomarkers_first_and_last_measurement_07_17_20, "/n/groups/patel/sivateja/UKB/COVID19/covid_death_ukb9512_full_40GPCs_updated_07_17_20_with_biomarkers_first_and_last_measurement_processed.RDS")
+saveRDS(data_with_biomarkers_first_and_last_measurement_07_17_20, "covid_death_ukb9512_full_40GPCs_updated_07_17_20_with_biomarkers_first_and_last_measurement_processed.RDS")
 
 
