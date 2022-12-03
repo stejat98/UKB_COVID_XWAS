@@ -9,11 +9,11 @@ Processing data -> Running Models -> Processing Results
 
 a. Set directory paths
 
-b. Run `Processing data` scripts
+b. Run `ProcessingData` scripts
 
-c. Run `Running Models` scripts
+c. Run `RunningModels` scripts
 
-d. Run `Processing Results` scripts
+d. Run `Processin Results` scripts
 
 Reproduce Main Figures:
 
