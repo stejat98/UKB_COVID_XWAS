@@ -1,3 +1,10 @@
+## Sivateja Tangirala
+
+# The following script puts together the input dataframe consisting of exposures, outcome of COVID-19 positivity
+# and baseline covariates adjusted for during the analysis for the second timepoint (cases between 07/18/2020 and 02/02/2021).
+
+## assumes all input dfs used for script are in same directory ~/UKB_COVID19/
+
 
 library(tidyverse)
 library(lubridate)
