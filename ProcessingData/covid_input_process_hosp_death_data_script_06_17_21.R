@@ -1,3 +1,11 @@
+## Sivateja Tangirala
+
+# The following script appends hospitalization and death outcome data to the original input dataframe (consisting of exposures, outcome of COVID-19 positivity
+# and baseline covariates adjusted for during the analysis) for the second timepoint (cases between 07/18/2020 and 02/02/2021).
+
+## assumes all input dfs used for script are in same directory ~/UKB_COVID19/
+
+
 library(tidyverse)
 library(dummies)
 
@@ -19,19 +27,6 @@ ukb26323 <- read_delim("/n/groups/patel/uk_biobank/pheno_26323/ukb26323.tab",del
 age_data <- ukb26323 %>% select(f.eid,f.21022.0.0) %>% mutate(Age = f.21022.0.0, Age_squared = f.21022.0.0^2)
 
 covid_ukb9512_full_40GPCs_updated_age_data <- left_join(covid_ukb9512_full_40GPCs_updated, age_data, by = c("eid" = "f.eid"))
-
-# ## filter for hospitalization due to COVID 19 (ICD-10 codes: U07.1 AND U07.2)
-# covid_hosp_data  <- hesin_diag_table %>% filter(diag_icd10 %in% c("U071","U072"))
-# covid_hosp_data_patient_ids <- unique(covid_hosp_data$eid)
-# 
-# 
-# #all_data_patient_ids <- unique(hesin_diag_table$eid)
-# ## include all ids from covid positivity data
-# all_data_patient_ids <- unique(covid_ukb9512_full_40GPCs_updated_age_data$eid)
-# 
-# covid_hosp_status <- ifelse(all_data_patient_ids %in% covid_hosp_data_patient_ids,1,0)
-# 
-# covid_hosp_status_data_processed <- as.data.frame(cbind(eid = all_data_patient_ids, covid_hosp_status))
 
 
 ## function to check if there is at least one hospitalization (in-patient status) for a given participant  
