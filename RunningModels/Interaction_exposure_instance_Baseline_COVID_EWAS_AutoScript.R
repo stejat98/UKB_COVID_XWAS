@@ -1,3 +1,7 @@
+## Sivateja Tangirala
+## 09/15/21
+## COVID-19 positivity interaction EWAS analysis
+
 library(tidyverse)
 
 data_instance_0 <- readRDS("/n/scratch3/users/s/st320/UKB_COVID_XWAS/covid_death_ukb9512_full_40GPCs_updated_07_17_20_processed.RDS")
