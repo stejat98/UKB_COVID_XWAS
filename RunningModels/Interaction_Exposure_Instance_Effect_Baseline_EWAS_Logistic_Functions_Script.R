@@ -1,6 +1,6 @@
 ## Sivateja Tangirala
-## 06/17/19
-## Baseline Functions (poisson (log link) regression)
+## 06/17/2021
+## Baseline Functions (poisson (log link) regression) for interaction models (btwn exposure and timepoint)
 
 library(tidyverse)
 library(gdata)
