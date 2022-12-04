@@ -35,6 +35,6 @@ reformatted_exposures[grep("avg_f",reformatted_exposures)] <- sprintf("INT_%s",r
 reformatted_exposures[grep("median",reformatted_exposures)] <- sprintf("INT_%s",reformatted_exposures[grep("median",reformatted_exposures)])
 
 
-## run EWAS (logistic) for specified phenotype (Baseline covariates) [extract p-values, etc.]
+## run EWAS (poisson) for specified phenotype (Baseline covariates) [extract p-values, etc.]
 EWASLogistic(data=data, depvar = as.character("result")
      ,adjustments = adjustments,exposures=reformatted_exposures,offset_var = "time_diff_years",outFileName = "/home/st320/UKB_COVID_XWAS/covid_ewas_02_02_2021_poisson_log_glm_results_09_15_21")
