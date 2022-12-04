@@ -1,7 +1,7 @@
 ## Sivateja Tangirala
 
 # The following script further processes clinical biomarkers and infectious factors by performing inverse rank 
-# normalization (INT).
+# normalization (INT) for first timepoint (cases until 07/17/2020).
 
 ## assumes all input dfs used for script are in same directory ~/UKB_COVID19/
 
