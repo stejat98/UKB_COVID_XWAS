@@ -1,7 +1,7 @@
 ## Sivateja Tangirala
 
 # The following script puts together the input dataframe consisting of exposures, outcome of COVID-19 positivity
-# and baseline covariates adjusted for during the analysis.
+# and baseline covariates adjusted for during the analysis for the first timepoint (cases until 07/17/2020).
 
 ## assumes all input dfs used for script are in same directory ~/UKB_COVID19/
 
