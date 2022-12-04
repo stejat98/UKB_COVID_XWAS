@@ -40,13 +40,7 @@ reformatted_exposures[grep("avg_f",reformatted_exposures)] <- sprintf("INT_%s",r
 reformatted_exposures[grep("median",reformatted_exposures)] <- sprintf("INT_%s",reformatted_exposures[grep("median",reformatted_exposures)])
 
 
-## run EWAS (logistic) for specified phenotype (Baseline covariates) [extract p-values, etc.]
+## run EWAS (poisson) for specified phenotype (Baseline covariates) [extract p-values, etc.]
 EWASLogistic(data=data, depvar = as.character("result")
              ,adjustments = adjustments,exposures=reformatted_exposures,instance = "instance",offset_var = "time_diff_years",outFileName = "/home/st320/UKB_COVID_XWAS/interaction_exposure_instance_covid_ewas_poisson_log_glm_results_09_15_21")
-
-"%s ~ %s + %s + %s*instance + offset(log(time_diff_years))"
-
- glm2(as.formula("result ~ x_826 + Age + x_826:instance + offset(log(time_diff_years))"), data,family=poisson(link=log)) %>% tidy()
- 
- x_826_results_interaction  <- executeModelLogistic(constructFormulaLogistic("x_826",data1,"result", adjustments)[[1]],data,"x_826","result",adjustments,instance = "instance",offset_var = "time_diff_years")
 
