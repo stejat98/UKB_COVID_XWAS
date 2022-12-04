@@ -13,9 +13,6 @@ library(dummies)
 
 source("/home/st320/Baseline_EWAS_Logistic_Functions_Script.R") 
 
-
-# data <- readRDS("/n/scratch3/users/s/st320/UKB_COVID_XWAS/covid_death_ukb9512_full_40GPCs_updated.RDS")
-
 data <- readRDS("/n/scratch3/users/s/st320/UKB_COVID_XWAS/covid_death_ukb9512_full_40GPCs_updated_06_17_21_processed.RDS")
 
 load(file="/n/scratch3/users/s/st320/UKB_COVID_XWAS/all_baseline_col_names_covid_xwas.RData")
