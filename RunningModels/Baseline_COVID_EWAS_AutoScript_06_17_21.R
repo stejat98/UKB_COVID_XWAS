@@ -1,6 +1,7 @@
 ## Sivateja Tangirala
 ## 05/21/20
 ## Baseline Analyses
+## COVID-19 positivity EWAS for tests between 07/18/2020 and 02/02/2021
 
 library(tidyverse)
 library(gdata)
