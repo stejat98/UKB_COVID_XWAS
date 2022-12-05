@@ -25,7 +25,7 @@ D. Run `ProcessingResults` scripts (process raw results from analyses and genera
 
 Reproduce Main Figures (run scripts in the same order listed below) :
 
-![Employee data](Figure_1.pdf?raw=true "Employee Data title")
+![Employee data](Figure_1.pdf "Employee Data title")
 
 ## **Generate Figure 2 (First time point Volcano plot):**
 
