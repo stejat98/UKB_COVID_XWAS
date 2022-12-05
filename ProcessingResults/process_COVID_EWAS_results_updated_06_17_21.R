@@ -119,7 +119,7 @@ sigfig <- function(vec, n=3){
   formatC(signif(vec,digits=n), digits=n,format="fg", flag="#") 
   
 } 
-## source: stackoverflow???
+## source: stackoverflow (https://stackoverflow.com/questions/3245862/format-numbers-to-significant-figures-nicely-in-r)
 
 
 top_factors_10_pct <- covid_test_ewas_fdr_10_pct_results %>% select(Exposure,`RiskRatio`, RR_lower_interv, RR_upper_interv, p.value1, FDR, AUC, AUCadjVariables, deltaAUC, SampleSize)
@@ -187,8 +187,6 @@ top_factors_FDR_0.1 <- unique(covid_test_ewas_fdr_10_pct_results$Exposure)
 
 covid_test_ewas_fdr_5_pct_results <- covid_ewas_09_15_2021_results_filtered_process %>% filter(FDR < 0.05)
 
-## add name for biomarker among top 5 exposures
-#covid_ewas_09_15_2021_results_filtered_process$Exposure_Name[grep("median_30630",covid_ewas_09_15_2021_results_filtered_process$Exposure)] <- "Apolipoprotein A"
 
 top_FDR_1_pct_factors_covid_ewas <- covid_ewas_09_15_2021_results_filtered_process %>% filter(FDR < 0.01) %>% arrange(FDR)
 
@@ -202,16 +200,12 @@ top_FDR_1_pct_table <- top_FDR_1_pct_table %>% select(Exposure, `RR (95% CI)`, F
 write_csv(top_FDR_1_pct_table, "UKB_COVID_XWAS/top_FDR_1_pct_table_09_15_21.csv")
 
 
-## need to add  FDR < 0.1 factors bmi health and disease factors and 
-#top_FDR_1_pct <- unique(top_FDR_1_pct_covid_ewas$Exposure_Name)
 
 subset_health_disease_factors <-  unique(ukb_health_disease_factors_mapping$health_disease_var)[c(2,5:8,13)]
 
 top_factors_FDR_0.05 <- unique(covid_test_ewas_fdr_5_pct_results$Exposure)
 
 
-## filter for 0.85 < RR < 1.15  AND  -log10(FDR) >= 10
-%>% filter((FDR <= 0.01 | deltaAUC > 0)  & (RiskRatio <= 0.9 | RiskRatio >= 1.1))
 
 
 exposure_labels_data <- covid_ewas_09_15_2021_results_filtered_process[-log10(covid_ewas_09_15_2021_results_filtered_process$FDR) >=10 & (covid_ewas_09_15_2021_results_filtered_process$RiskRatio >= 0.85 | covid_ewas_09_15_2021_results_filtered_process$RiskRatio <= 1.15),]
@@ -223,22 +217,11 @@ exposure_labels_data$Exposure_Name <- gsub("Blood clot, DVT, bronchitis, emphyse
 
 ## fix names of Exposures
 
-# exposure_labels_data$Exposure_Name[grep("x_680_1", exposure_labels_data$Exposure)] <- "Own accommodation outright"
-# exposure_labels_data$Exposure_Name[grep("x_680_5", exposure_labels_data$Exposure)] <- "Pay part rent and part mortgage"
+
 exposure_labels_data$Exposure_Name[grep("x_6141_2", exposure_labels_data$Exposure)] <- "Son and/or daughter (including step-children) in household"
-# exposure_labels_data$Exposure_Name[grep("x_6141_5", exposure_labels_data$Exposure)] <- "Grandparent in household"
-# exposure_labels_data$Exposure_Name[grep("x_6164_4", exposure_labels_data$Exposure)] <- "Light DIY [e.g. pruning, watering the lawn]) in last 4 weeks (physical activity)"
 exposure_labels_data$Exposure_Name[grep("x_20118_5.x", exposure_labels_data$Exposure)] <- "Urban (less sparse) home area population density"
 exposure_labels_data$Exposure_Name[grep("x_20118_16.x", exposure_labels_data$Exposure)] <- "Lives in Scotland (accessible rural location) "
-# exposure_labels_data$Exposure_Name[grep("x_670_3", exposure_labels_data$Exposure)] <- "Participant lives in a mobile or temporary structure (i.e. caravan)"
-# exposure_labels_data$Exposure_Name[grep("x_6138_100", exposure_labels_data$Exposure)] <- "Qualifications (No educational qualifications)"  
 exposure_labels_data$Exposure_Name[grep("^x_6138_1$", exposure_labels_data$Exposure)] <- "Qualifications (College or University Degree)"
-# exposure_labels_data$Exposure_Name[grep("^x_6138_2$", exposure_labels_data$Exposure)] <- "Qualifications (A levels/AS levels or equivalent)"
-# exposure_labels_data$Exposure_Name[grep("^x_6138_3$", exposure_labels_data$Exposure)] <- "Qualifications (O levels/GCSEs or equivalent)"
-# exposure_labels_data$Exposure_Name[grep("^x_6138_4$", exposure_labels_data$Exposure)] <- "Qualifications (CSEs or equivalent)"
-# exposure_labels_data$Exposure_Name[grep("^x_6138_5$", exposure_labels_data$Exposure)] <- "Qualifications (NVQ or HND or HNC or equivalent)"
-# exposure_labels_data$Exposure_Name[grep("^x_6138_6$", exposure_labels_data$Exposure)] <- "Qualifications (Other professional qualifications eg: nursing, teaching)"
-# exposure_labels_data$Exposure_Name[grep("x_826",exposure_labels_data$Exposure)] <- "Current frequency of shift work (relative frequency [ranging from never/rarely to always])"
 exposure_labels_data$Exposure_Name[grep("x_24016",exposure_labels_data$Exposure)] <- "Nitrogen dioxide air pollution (ug/m3); 2005"
 exposure_labels_data$Exposure_Name[grep("x_24017",exposure_labels_data$Exposure)] <- "Nitrogen dioxide air pollution (ug/m3); 2006"
 exposure_labels_data$Exposure_Name[grep("x_24018",exposure_labels_data$Exposure)] <- "Nitrogen dioxide air pollution (ug/m3); 2007"
@@ -247,18 +230,6 @@ exposure_labels_data$Exposure_Name[grep("x_24003",exposure_labels_data$Exposure)
 exposure_labels_data$Exposure_Name[grep("x_24004",exposure_labels_data$Exposure)] <- "Nitrogen oxides air pollution (ug/m3); 2010"
 exposure_labels_data$Exposure_Name[grep("x_24006",exposure_labels_data$Exposure)] <- "Particulate matter air pollution (pm2.5 [ug/m3]); 2010"
 exposure_labels_data$Exposure_Name[grep("x_24007",exposure_labels_data$Exposure)] <- "Particulate matter air pollution (pm2.5) absorbance (per-meter); 2010"
-# exposure_labels_data$Exposure_Name[grep("x_816",exposure_labels_data$Exposure)] <- "Job involves heavy manual or physical work (relative frequency [ranging from never/rarely to always])"
-# exposure_labels_data$Exposure_Name[grep("x_189",exposure_labels_data$Exposure)] <- "Townsend deprivation index at recruitment"
-# exposure_labels_data$Exposure_Name[grep("x_24013",exposure_labels_data$Exposure)] <- "Total traffic load on major roads (vehicles/day)"
-# exposure_labels_data$Exposure_Name[grep("x_1279",exposure_labels_data$Exposure)] <- "Exposure to tobacco smoke outside home (hours/week)"
-# exposure_labels_data$Exposure_Name[grep("x_24012",exposure_labels_data$Exposure)] <- "Inverse distance to the nearest major road (1/m)"
-# exposure_labels_data$Exposure_Name[grep("x_24015",exposure_labels_data$Exposure)] <- "Sum of road length of major roads within 100m (m)"
-# exposure_labels_data$Exposure_Name[grep("x_1558",exposure_labels_data$Exposure)] <- "Alcohol intake frequency (relative frequency [ranging from daily or almost daily to never])"
-# exposure_labels_data$Exposure_Name[grep("INT_median_21001",exposure_labels_data$Exposure)] <- "Body mass index (kg/m2)"
-# exposure_labels_data$Exposure_Name[grep("INT_median_30630",exposure_labels_data$Exposure)] <- "Apolipoprotein A (g/L)"
-# exposure_labels_data$Exposure_Name[grep("INT_median_30760",exposure_labels_data$Exposure)] <- "HDL cholesterol (mmol/L)"
-
-#exposure_labels_data$Exposure_Name[grep("median_30760",exposure_labels_data$Exposure)] <- "HDL cholesterol (mmol/L)"
 exposure_labels_data$Exposure_Name[grep("x_6152_NOA",exposure_labels_data$Exposure)] <- "No respiratory, blood, or allergy conditions diagnosed"
  
 
@@ -293,7 +264,8 @@ sigfig <- function(vec, n=3){
   formatC(signif(vec,digits=n), digits=n,format="fg", flag="#") 
   
 } 
-## source: stackoverflow???
+## source: stackoverflow (https://stackoverflow.com/questions/3245862/format-numbers-to-significant-figures-nicely-in-r)
+
 
 
 top_factors_10_pct_plus_health_disease_factors <- exposure_labels_data %>% select(Exposure,Exposure_Name, `RiskRatio`, RR_lower_interv, RR_upper_interv, p.value1, FDR)
