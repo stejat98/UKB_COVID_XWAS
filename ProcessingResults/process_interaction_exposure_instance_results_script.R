@@ -3,11 +3,13 @@
 # process raw interaction analysis results DF and generate
 # interaction analysis scatterplot visualization
 
-# setting the working directory to where the input data is stored and data saved to 
-# system("mkdir UKB_COVID19")
+# setting the working directory to user-specified path as to where the input data is stored and data saved to 
 
-setwd('~/UKB_COVID19/')
+args <- commandArgs(trailingOnly = TRUE)     
 
+user_spec_path = as.character(args[1])
+
+setwd(user_spec_path)
 
 
 
