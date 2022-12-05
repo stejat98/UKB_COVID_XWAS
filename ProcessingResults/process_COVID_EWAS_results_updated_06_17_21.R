@@ -3,11 +3,13 @@
 # process raw COVID-19 positivity analysis (second timepoint [cases between 07/18/2020 and 02/02/2021]) results DF and generate
 # visualizations
 
-# setting the working directory to where the input data is stored and data saved to 
-# system("mkdir UKB_COVID19")
+# setting the working directory to user-specified path as to where the input data is stored and data saved to 
 
-setwd('~/UKB_COVID19/')
+args <- commandArgs(trailingOnly = TRUE)     
 
+user_spec_path = as.character(args[1])
+
+setwd(user_spec_path)
 
 
 library(tidyverse)
