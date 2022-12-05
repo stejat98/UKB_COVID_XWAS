@@ -14,7 +14,7 @@ Processing data -> Running Models -> Processing Results
 
 A. Set directory paths
    * Set the working directory to a path that you specify (as to where the input data is stored and data saved to)
-   * For example, we would run the command "Rscript xxxx.R user_specified_path" (xxxx and user_specified_path are placeholders)
+   * For example, we would run the command "Rscript xxxx.R user_specified_path" on the command line(xxxx and user_specified_path are placeholders)
 
 
 B. Run `ProcessingData` scripts (gather and process input data)
