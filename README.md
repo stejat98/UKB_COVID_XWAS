@@ -12,7 +12,7 @@ Processing data -> Running Models -> Processing Results
 
 A. Set directory paths
    * Set the working directory to a full path that you specify (as to where the input data is stored and data saved to)
-   * For example, if you specify the full path to be "/Users/sivatejatang/Downloads/UKB_COVID19" and want to run a R script        UKB_COVID_exposures_data_input_05_17_21.R you will run 
+   * For example, if you specify the full path to be "/Users/sivatejatang/Downloads/UKB_COVID19" and want to run a R script        UKB_COVID_exposures_data_input_05_17_21.R you will run the command in the point below
    * "Rscript UKB_COVID_exposures_data_input_05_17_21.R /Users/sivatejatang/Downloads/UKB_COVID19"
 
 
