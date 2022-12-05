@@ -1,3 +1,10 @@
+# Sivateja Tangirala
+
+# process raw COVID-19 positivity analysis (first timepoint [cases until 07/17/2020]) results DF and generate
+# visualizations
+
+
+
 library(tidyverse)
 library(ggrepel)
 
