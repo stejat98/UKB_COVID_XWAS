@@ -11,7 +11,10 @@ Code flow:
 Processing data -> Running Models -> Processing Results
 
 A. Set directory paths
-   * User can create a directory `UKB_COVID19` using R : system("mkdir UKB_COVID19"). Code assumes all (input and output) files are in this folder.
+   * Set the working directory to a path that you specify (as to where the input data is stored and data saved to)
+   * For example, if you specify the full path to be "/Users/sivatejatang/Downloads/UKB_COVID19" and wan to run a R script UKB_COVID_exposures_data_input_05_17_21.R (for example), you will run the command as following:
+   "Rscript UKB_COVID_exposures_data_input_05_17_21.R /Users/sivatejatang/Downloads/UKB_COVID19"
+
 
 B. Run `ProcessingData` scripts (gather and process input data)
 
