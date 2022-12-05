@@ -2,6 +2,15 @@
 ## 09/15/21
 ## COVID-19 positivity interaction EWAS analysis
 
+# setting the working directory to user-specified path as to where the input data is stored and data saved to 
+
+args <- commandArgs(trailingOnly = TRUE)     
+
+user_spec_path = as.character(args[1])
+
+setwd(user_spec_path)
+
+
 library(tidyverse)
 
 data_instance_0 <- readRDS("covid_death_ukb9512_full_40GPCs_updated_07_17_20_processed.RDS")
