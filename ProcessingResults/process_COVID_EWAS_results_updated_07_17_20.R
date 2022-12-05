@@ -3,6 +3,11 @@
 # process raw COVID-19 positivity analysis (first timepoint [cases until 07/17/2020]) results DF and generate
 # visualizations
 
+# setting the working directory to where the input data is stored and data saved to 
+# system("mkdir UKB_COVID19")
+
+setwd('~/UKB_COVID19/')
+
 
 
 library(tidyverse)
