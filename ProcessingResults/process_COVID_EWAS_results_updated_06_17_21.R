@@ -17,7 +17,7 @@ library(ggrepel)
 
 
 ## COVID test positivity (09/15/2021)
-covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df  <- readRDS("/home/st320/UKB_COVID_XWAS/covid_ewas_02_02_2021_poisson_log_glm_results_09_15_21.RDS")
+covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df  <- readRDS("covid_ewas_02_02_2021_poisson_log_glm_results_09_15_21.RDS")
 
 covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df$RiskRatio <- exp(covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df$estimate)
 
@@ -29,12 +29,12 @@ covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df_filtered <- covid_
 covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df_filtered <- covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df_filtered %>% mutate(FDR = p.adjust(p.value1,method ="fdr"))
 
 
-saveRDS(covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df_filtered, "UKB_COVID_XWAS/covid_ewas_09_15_2021_results_filtered_process.RDS")
+saveRDS(covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df_filtered, "covid_ewas_09_15_2021_results_filtered_process.RDS")
 
 
 ### biomarker scatterplot 
 
-biomarkers_first_last_measurements_covid_ewas_02_02_2021_poisson_log_glm_results_05_02_22 <- readRDS("/home/st320/UKB_COVID_XWAS/biomarkers_first_last_measurements_covid_ewas_02_02_2021_poisson_log_glm_results_05_02_22.RDS")
+biomarkers_first_last_measurements_covid_ewas_02_02_2021_poisson_log_glm_results_05_02_22 <- readRDS("biomarkers_first_last_measurements_covid_ewas_02_02_2021_poisson_log_glm_results_05_02_22.RDS")
 biomarkers_first_last_measurements_covid_ewas_02_02_2021_poisson_log_glm_results_05_02_22$RiskRatio <- exp(biomarkers_first_last_measurements_covid_ewas_02_02_2021_poisson_log_glm_results_05_02_22$estimate)
 biomarkers_first_last_measurements_covid_ewas_02_02_2021_poisson_log_glm_results_05_02_22_filtered <- biomarkers_first_last_measurements_covid_ewas_02_02_2021_poisson_log_glm_results_05_02_22 %>% filter(!term %in% unique(biomarkers_first_last_measurements_covid_ewas_02_02_2021_poisson_log_glm_results_05_02_22$term)[c(1,3:83)])
 
@@ -43,7 +43,7 @@ biomarkers_first_measurement_covid_ewas_02_02_2021_results_05_02_22$measurement 
 biomarkers_last_measurement_covid_ewas_02_02_2021_results_05_02_22 <- biomarkers_first_last_measurements_covid_ewas_02_02_2021_poisson_log_glm_results_05_02_22_filtered[grep("last",biomarkers_first_last_measurements_covid_ewas_02_02_2021_poisson_log_glm_results_05_02_22_filtered$Exposure),]
 biomarkers_last_measurement_covid_ewas_02_02_2021_results_05_02_22$measurement <- "last"
 
-covid_ewas_09_15_2021_results_filtered_process <- readRDS("UKB_COVID_XWAS/covid_ewas_09_15_2021_results_filtered_process.RDS")
+covid_ewas_09_15_2021_results_filtered_process <- readRDS("covid_ewas_09_15_2021_results_filtered_process.RDS")
 biomarkers_median_09_15_2021_results <- covid_ewas_09_15_2021_results_filtered_process[grep("median",covid_ewas_09_15_2021_results_filtered_process$Exposure),]
 biomarkers_median_09_15_2021_results$measurement <- "median"
 
@@ -61,11 +61,11 @@ biomarkers_all <- left_join(biomarkers_all, biomarkers_last, by = "Exposure")
 
 library(ggplot2)
 
-pdf("UKB_COVID_XWAS/scatterplot_median_first_measurement_02_02_2021_results_05_02_22.pdf")
+pdf("scatterplot_median_first_measurement_02_02_2021_results_05_02_22.pdf")
 ggplot(aes(x = RiskRatio_m, y = RiskRatio_f), data = biomarkers_all) + geom_point() + xlab("Risk Ratio (median of measurements)") + ylab("Risk Ratio (first measurement)")
 dev.off()
 
-pdf("UKB_COVID_XWAS/scatterplot_median_last_measurement_02_02_2021_results_05_02_22.pdf")
+pdf("scatterplot_median_last_measurement_02_02_2021_results_05_02_22.pdf")
 ggplot(aes(x = RiskRatio_m, y = RiskRatio_l), data = biomarkers_all) + geom_point() + xlab("Risk Ratio (median of measurements)") + ylab("Risk Ratio (last measurement)") + ylim(0, 1.5)
 dev.off()
 
@@ -96,7 +96,7 @@ thresholds <- seq(from = 1 , to = 15, by = 1)
 
 data_props_thresholds <- as.data.frame(cbind(thresholds, props))
 
-pdf("/home/st320/UKB_COVID_XWAS/plot_threshold_props_sig_02_02_2021_results_05_02_22.pdf")
+pdf("plot_threshold_props_sig_02_02_2021_results_05_02_22.pdf")
 ggplot(aes(x = thresholds, y = props), data = data_props_thresholds) + geom_bar(stat = "identity") + xlab("FDR Threshold (%)") + ylab ("Proportion of significant findings")
 dev.off()
 
@@ -104,18 +104,18 @@ covid_ewas_09_15_2021_results_filtered_process <- covid_ewas_09_15_2021_results_
 
 covid_test_ewas_fdr_10_pct_results <- covid_ewas_09_15_2021_results_filtered_process %>% filter(FDR < quantile(FDR, 0.1, na.rm = T)) 
 
-saveRDS(covid_test_ewas_fdr_10_pct_results, "/home/st320/UKB_COVID_XWAS/covid_test_ewas_fdr_10_pct_results_withdeltaAUC.RDS")
-covid_test_ewas_fdr_10_pct_results <- readRDS("/home/st320/UKB_COVID_XWAS/covid_test_ewas_fdr_10_pct_results_withdeltaAUC.RDS")
+saveRDS(covid_test_ewas_fdr_10_pct_results, "covid_test_ewas_fdr_10_pct_results_withdeltaAUC.RDS")
+covid_test_ewas_fdr_10_pct_results <- readRDS("covid_test_ewas_fdr_10_pct_results_withdeltaAUC.RDS")
 
 covid_test_ewas_fdr_10_pct_results <- covid_test_ewas_fdr_10_pct_results %>% mutate(RR_lower_interv = exp(estimate + qnorm(0.025) * std.error1),
                                                                                     RR_upper_interv = exp(estimate + qnorm(0.975) * std.error1))
 
 
-saveRDS(covid_test_ewas_fdr_10_pct_results, "/home/st320/UKB_COVID_XWAS/covid_test_ewas_fdr_10_pct_results_withdeltaAUC_02_02_2021_results_05_02_22.RDS")
+saveRDS(covid_test_ewas_fdr_10_pct_results, "covid_test_ewas_fdr_10_pct_results_withdeltaAUC_02_02_2021_results_05_02_22.RDS")
 
 covid_test_ewas_fdr_10_pct_results <- covid_test_ewas_fdr_10_pct_results %>% arrange(FDR)
 
-write_csv(covid_test_ewas_fdr_10_pct_results, "/home/st320/UKB_COVID_XWAS/covid_test_ewas_fdr_10_pct_results_withdeltaAUC_02_02_2021_results_05_02_22.csv")
+write_csv(covid_test_ewas_fdr_10_pct_results, "covid_test_ewas_fdr_10_pct_results_withdeltaAUC_02_02_2021_results_05_02_22.csv")
 
 sigfig <- function(vec, n=3){ 
   ### function to round values to N significant digits
@@ -147,7 +147,7 @@ top_factors_10_pct <- top_factors_10_pct %>% mutate(`Risk Ratio [95% CI]` = spri
 top_factors_10_pct <- top_factors_10_pct %>% rename(`p-value` =  p.value1)
 top_factors_10_pct <-  top_factors_10_pct %>% select(Exposure,`Risk Ratio [95% CI]`, `p-value`, FDR,AUC, AUCadjVariables, deltaAUC, SampleSize)
 
-write_csv(top_factors_10_pct, "UKB_COVID_XWAS/top_factors_10_pct_02_02_21_05_09_22.csv")
+write_csv(top_factors_10_pct, "top_factors_10_pct_02_02_21_05_09_22.csv")
 
 
 
@@ -155,7 +155,7 @@ write_csv(top_factors_10_pct, "UKB_COVID_XWAS/top_factors_10_pct_02_02_21_05_09_
 
 exposures_hosp_death_input <- unique(covid_test_ewas_fdr_10_pct_results$Exposure)
 
-save(exposures_hosp_death_input,file="UKB_COVID_XWAS/ukb_exposures_covid_hosp_death_updated_09_15_21.RData")
+save(exposures_hosp_death_input,file="ukb_exposures_covid_hosp_death_updated_09_15_21.RData")
 
 covid_fdr_10_pct_exposures <-  exposures_hosp_death_input
 
@@ -204,7 +204,7 @@ top_FDR_1_pct_table <- top_FDR_1_pct_factors_covid_ewas %>% select(Exposure,Expo
 
 top_FDR_1_pct_table <- top_FDR_1_pct_table %>% select(Exposure, `RR (95% CI)`, FDR)
 
-write_csv(top_FDR_1_pct_table, "UKB_COVID_XWAS/top_FDR_1_pct_table_09_15_21.csv")
+write_csv(top_FDR_1_pct_table, "top_FDR_1_pct_table_09_15_21.csv")
 
 
 
@@ -240,12 +240,12 @@ exposure_labels_data$Exposure_Name[grep("x_24007",exposure_labels_data$Exposure)
 exposure_labels_data$Exposure_Name[grep("x_6152_NOA",exposure_labels_data$Exposure)] <- "No respiratory, blood, or allergy conditions diagnosed"
  
 
-write_csv(exposure_labels_data, "UKB_COVID_XWAS/exposure_labels_data_09_15_2021.csv")
+write_csv(exposure_labels_data, "exposure_labels_data_09_15_2021.csv")
 
 covid_ewas_09_15_2021_results_filtered_process <- covid_ewas_09_15_2021_results_filtered_process %>% filter(!is.na(Significance))
 saveRDS(covid_ewas_09_15_2021_results_filtered_process, "covid_positivity_volcano_plot_df_09_15_21.RDS")
 
-exposure_labels_data <- read.csv("UKB_COVID_XWAS/exposure_labels_data_09_15_2021.csv")
+exposure_labels_data <- read.csv("exposure_labels_data_09_15_2021.csv")
 covid_ewas_09_15_2021_results_filtered_process <- readRDS("covid_positivity_volcano_plot_df_09_15_21.RDS")
 
 ## filter out non-FDR significant labels (chronic disease factors) from labels df
@@ -253,13 +253,13 @@ exposure_labels_data <- exposure_labels_data %>% filter(Significance != "FDR > 0
 exposure_labels_data <- exposure_labels_data[-nrow(exposure_labels_data),]
 
 
-pdf("UKB_COVID_XWAS/covid_test_ewas_volcano_plot_zoom_in_09_15_21.pdf",width=14, height=14)
+pdf("covid_test_ewas_volcano_plot_zoom_in_09_15_21.pdf",width=14, height=14)
 ggplot(aes(x= RiskRatio, y = -log10(FDR), col = Significance),data=covid_ewas_09_15_2021_results_filtered_process) + geom_point() + xlim(0.6, 1.3) +
   geom_text_repel(aes(RiskRatio, -log10(FDR), label = Exposure_Name),colour = "black",segment.size = 0.1, size = 5, data = exposure_labels_data ) + xlab("RR") + ylab(expression(-log[10](FDR))) + theme_bw() + theme(legend.position = "none", axis.text = element_text(size = 20), axis.title = element_text(size = 20))
 dev.off()
 
 
-#exposure_labels_data <- read.csv("UKB_COVID_XWAS/exposure_labels_data_09_15_2021.csv")
+#exposure_labels_data <- read.csv("exposure_labels_data_09_15_2021.csv")
 
 
 sigfig <- function(vec, n=3){ 
@@ -294,17 +294,17 @@ top_factors_10_pct <- top_factors_10_pct %>% arrange(as.numeric(FDR))
 
 top_factors_10_pct <- top_factors_10_pct %>% mutate(`Risk Ratio [95% CI]` = sprintf("%s (%s - %s)",RiskRatio,RR_lower_interv,RR_upper_interv),p.value1 = as.numeric(p.value1), FDR = as.numeric(FDR))
 
-write_csv(top_factors_10_pct, "UKB_COVID_XWAS/top_factors_10_pct_09_15_21.csv")
+write_csv(top_factors_10_pct, "top_factors_10_pct_09_15_21.csv")
 
 
 covid_positivity_volcano_plot_df <- readRDS("covid_positivity_volcano_plot_df_09_15_21.RDS")
-exposure_labels_data <- read_csv("UKB_COVID_XWAS/exposure_labels_data_09_15_2021.csv")
+exposure_labels_data <- read_csv("exposure_labels_data_09_15_2021.csv")
 
 ## filter out non-FDR significant labels (chronic disease factors) from labels df
 exposure_labels_data <- exposure_labels_data %>% filter(Significance != "FDR > 0.1")
 exposure_labels_data <- exposure_labels_data[-nrow(exposure_labels_data),]
 
-pdf("UKB_COVID_XWAS/covid_test_ewas_volcano_plot_zoom_in_2_09_15_21.pdf",width=14, height=14)
+pdf("covid_test_ewas_volcano_plot_zoom_in_2_09_15_21.pdf",width=14, height=14)
 ggplot(aes(x= RiskRatio, y = -log10(FDR), col = Significance),data=covid_positivity_volcano_plot_df) + geom_point() + xlim(0.5,1.5) +
   geom_text_repel(aes(RiskRatio, -log10(FDR), label = Exposure_Name),colour = "black",segment.size = 0.1, size = 1.5, data = exposure_labels_data ) + xlab("RR") + ylab(expression(-log[10](FDR)))
 dev.off()
