@@ -24,6 +24,8 @@ C. Run `RunningModels` scripts (implement poisson regression models)
 D. Run `ProcessingResults` scripts (process raw results from analyses and generate visualizations)
 
 Reproduce Main Figures (run scripts in the same order listed below) :
+
+
 <img src="Figure_1.pdf" alt="Figure 1" title="Figure 1">
 
 
