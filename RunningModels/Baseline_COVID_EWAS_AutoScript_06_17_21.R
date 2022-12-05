@@ -3,6 +3,13 @@
 ## Baseline Analyses
 ## COVID-19 positivity EWAS for tests between 07/18/2020 and 02/02/2021
 
+# setting the working directory to where the input data is stored and data saved to 
+# system("mkdir UKB_COVID19")
+
+setwd('~/UKB_COVID19/')
+
+
+
 library(tidyverse)
 library(gdata)
 library(RNOmni)
