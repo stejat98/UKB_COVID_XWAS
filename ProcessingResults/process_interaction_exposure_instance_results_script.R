@@ -18,7 +18,7 @@ library(ggrepel)
 
 
 ## load raw interaction analysis results DF
-covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df  <- readRDS("/home/st320/UKB_COVID_XWAS/interaction_exposure_instance_covid_ewas_poisson_log_glm_results_09_15_21.RDS")
+covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df  <- readRDS("interaction_exposure_instance_covid_ewas_poisson_log_glm_results_09_15_21.RDS")
 
 covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df$deltaRiskRatio <- exp(covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df$estimate)
 
@@ -30,10 +30,10 @@ covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df_filtered <- covid_
 covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df_filtered <- covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df_filtered %>% mutate(FDR = p.adjust(p.value1,method ="fdr"))
 
 
-saveRDS(covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df_filtered, "UKB_COVID_XWAS/interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process.RDS")
+saveRDS(covid_ewas_baseline_covariates_adjusted_09_15_2021_results_df_filtered, "interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process.RDS")
 
 
-interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process <- readRDS("UKB_COVID_XWAS/interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process.RDS")
+interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process <- readRDS("interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process.RDS")
 
 interaction_exposure_instance_covid_test_ewas_fdr_10_pct_results <- interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process %>% filter(FDR < 0.1)
 
@@ -70,13 +70,13 @@ interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process_sig
 interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process_sig %>% arrange(FDR)
 
 
-write_csv(interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process_sig, "UKB_COVID_XWAS/sig_interaction_exposures_table_09_23_21.csv")
+write_csv(interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process_sig, "sig_interaction_exposures_table_09_23_21.csv")
 
 
 
 ## generate scatterplot timpeoint 0 estimate  vs Interaction estimate
 
-interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process <- readRDS("UKB_COVID_XWAS/interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process.RDS")
+interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process <- readRDS("interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process.RDS")
 
 interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process  <- left_join(interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process,exposures_id_name_mapping_updated,by=c("Exposure"="variableName"))
 interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process <- left_join(interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process,ukb_pheno_id_name_mapping,by = c("Exposure" = "Phenotype_id"))
@@ -88,14 +88,14 @@ interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process$Exp
 interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process <- interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process[,-c(grep("Category",colnames(interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process)):grep("Name.y",colnames(interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process)))]
 
 
-#covid_ewas_09_15_2021_results_filtered_process <- readRDS("UKB_COVID_XWAS/interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process.RDS")
+#covid_ewas_09_15_2021_results_filtered_process <- readRDS("interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process.RDS")
 
 interaction_exposure_instance_covid_test_ewas_fdr_10_pct_results <- interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process %>% filter(FDR < 0.1)
 
 #interaction_exposure_instance_covid_test_ewas_fdr_10_pct_results <- interaction_exposure_instance_covid_ewas_09_15_2021_results_filtered_process %>% filter(FDR < quantile(FDR, 0.1, na.rm = T)) %>% arrange(FDR)
 
 
-covid_ewas_07_17_2020_results_filtered_process <- readRDS("UKB_COVID_XWAS/covid_ewas_07_17_2020_results_filtered_process.RDS")
+covid_ewas_07_17_2020_results_filtered_process <- readRDS("covid_ewas_07_17_2020_results_filtered_process.RDS")
 
 covid_ewas_07_17_2020_results_filtered_process <- covid_ewas_07_17_2020_results_filtered_process %>% filter(SampleSize > 100)
 
@@ -125,7 +125,7 @@ scatterplot_df$Exposure_Name[grep("x_6150_3", scatterplot_df$Exposure)] <- "Stro
 scatterplot_df$Exposure_Name[grep("x_6152_5", scatterplot_df$Exposure)] <- "Blood clot in the leg (DVT) diagnosed by doctor"
 
 ## Generate Interaction analysis scatter plot visualization
-pdf("UKB_COVID_XWAS/interaction_estimate_first_timepoint_scatterplot.pdf",width=14, height=14)
+pdf("interaction_estimate_first_timepoint_scatterplot.pdf",width=14, height=14)
 ggplot(aes(x= RiskRatio, y = deltaRiskRatio),data=scatterplot_df) + geom_point() + xlim(0.7, 1.25) + ylim(0.5,1.63) + geom_smooth(method='lm') +
   geom_text_repel(aes(RiskRatio, deltaRiskRatio, label = Exposure_Name),colour = "black",segment.size = 0.1, size = 7.5, data = scatterplot_df[which(scatterplot_df$labelExposure == 1),]) + xlab("RR for first timepoint (07/17/2020)") + ylab("Change in factor of effect between timepoints") + theme_bw()  + theme(legend.position = "none", axis.text = element_text(size = 22.5), axis.title = element_text(size = 22.5))
 dev.off()
