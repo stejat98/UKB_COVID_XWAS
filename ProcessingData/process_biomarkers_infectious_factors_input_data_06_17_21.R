@@ -3,12 +3,14 @@
 # The following script further processes clinical biomarkers and infectious factors by performing inverse rank 
 # normalization (INT) for second timepoint (cases between 07/18/2020 and 02/02/2021).
 
-## assumes all input dfs used for script are in same directory ~/UKB_COVID19/
 
-# setting the working directory to where the input data is stored and data saved to 
-# system("mkdir UKB_COVID19")
+# setting the working directory to user-specified path as to where the input data is stored and data saved to 
 
-setwd('~/UKB_COVID19/')
+args <- commandArgs(trailingOnly = TRUE)     
+
+user_spec_path = as.character(args[1])
+
+setwd(user_spec_path)
 
 
 
