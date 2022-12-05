@@ -3,10 +3,13 @@
 ## Baseline Analyses
 ## COVID-19 positivity EWAS for tests between 07/18/2020 and 02/02/2021
 
-# setting the working directory to where the input data is stored and data saved to 
-# system("mkdir UKB_COVID19")
+# setting the working directory to user-specified path as to where the input data is stored and data saved to 
 
-setwd('~/UKB_COVID19/')
+args <- commandArgs(trailingOnly = TRUE)     
+
+user_spec_path = as.character(args[1])
+
+setwd(user_spec_path)
 
 
 
