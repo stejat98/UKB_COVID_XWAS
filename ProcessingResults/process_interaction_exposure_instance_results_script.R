@@ -3,6 +3,13 @@
 # process raw interaction analysis results DF and generate
 # interaction analysis scatterplot visualization
 
+# setting the working directory to where the input data is stored and data saved to 
+# system("mkdir UKB_COVID19")
+
+setwd('~/UKB_COVID19/')
+
+
+
 
 library(tidyverse)
 library(ggrepel)
