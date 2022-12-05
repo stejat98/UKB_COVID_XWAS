@@ -23,10 +23,12 @@ C. Run `RunningModels` scripts (implement poisson regression models)
 
 D. Run `ProcessingResults` scripts (process raw results from analyses and generate visualizations)
 
-Reproduce Main Figures (run scripts in the same order listed below) :
+
 
 ## **Figure 1 (Schematic diagram):**
 <img src="Figure_1.png" alt="Figure 1" title="Figure 1">
+
+Reproduce Main Figures (run scripts in the same order listed below) :
 
 
 ## **Generate Figure 2 (First time point Volcano plot):**
