@@ -24,7 +24,7 @@ D. Run `ProcessingResults` scripts (process raw results from analyses and genera
 
 Reproduce Main Figures (run scripts in the same order listed below) :
 
-> **Generate Figure 2 (First time point Volcano plot):**
+## **Generate Figure 2 (First time point Volcano plot):**
 
 1. **UKB_COVID_exposures_data_input_07_17_20.R**
 2. **covid_input_process_hosp_death_data_script_07_17_20_updated.R**
@@ -33,7 +33,7 @@ Reproduce Main Figures (run scripts in the same order listed below) :
   * sources Baseline_EWAS_Logistic_Functions_Script.R
 5. **process_COVID_EWAS_results_updated_07_17_20.R**
 
-> **Generate Figure 3 (Second time point Volcano plot):**
+## **Generate Figure 3 (Second time point Volcano plot):**
 
 1. **UKB_COVID_exposures_data_input_05_17_21.R**
 2. **covid_input_process_hosp_death_data_script_06_17_21.R**
@@ -42,7 +42,7 @@ Reproduce Main Figures (run scripts in the same order listed below) :
   * sources Baseline_EWAS_Logistic_Functions_Script.R
 5. **process_COVID_EWAS_results_updated_06_17_21.R**
 
-> **Generate Figure 4 (Interaction analysis scatter plot):**
+## **Generate Figure 4 (Interaction analysis scatter plot):**
 
 1. **Interaction_exposure_instance_Baseline_COVID_EWAS_AutoScript.R** 
   * sources Interaction_Exposure_Instance_Effect_Baseline_EWAS_Logistic_Functions_Script.R
