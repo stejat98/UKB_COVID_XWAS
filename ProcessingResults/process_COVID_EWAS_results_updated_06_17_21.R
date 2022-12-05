@@ -302,11 +302,3 @@ ggplot(aes(x= RiskRatio, y = -log10(FDR), col = Significance),data=covid_positiv
   geom_text_repel(aes(RiskRatio, -log10(FDR), label = Exposure_Name),colour = "black",segment.size = 0.1, size = 1.5, data = exposure_labels_data ) + xlab("RR") + ylab(expression(-log[10](FDR)))
 dev.off()
 
-
-#####
-
-covid_test_ewas_fdr_10_pct_results_AUC <- readRDS("/home/st320/UKB_COVID_XWAS/covid_test_ewas_fdr_10_pct_results_withdeltaAUC.RDS")
-
-
-
-
