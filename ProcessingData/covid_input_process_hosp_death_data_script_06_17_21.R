@@ -3,12 +3,15 @@
 # The following script appends hospitalization and death outcome data to the original input dataframe (consisting of exposures, outcome of COVID-19 positivity
 # and baseline covariates adjusted for during the analysis) for the second timepoint (cases between 07/18/2020 and 02/02/2021).
 
-## assumes all input dfs used for script are in same directory ~/UKB_COVID19/
 
-# setting the working directory to where the input data is stored and data saved to 
-# system("mkdir UKB_COVID19")
 
-setwd('~/UKB_COVID19/')
+# setting the working directory to user-specified path as to where the input data is stored and data saved to 
+
+args <- commandArgs(trailingOnly = TRUE)     
+
+user_spec_path = as.character(args[1])
+
+setwd(user_spec_path)
 
 
 
