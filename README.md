@@ -11,7 +11,7 @@ Code flow:
 Processing data -> Running Models -> Processing Results
 
 A. Set directory paths
-User can create a directory `UKB_COVID19` using R : system("mkdir UKB_COVID19"). Code assumes all (input and output) files are in this folder.
+   * User can create a directory `UKB_COVID19` using R : system("mkdir UKB_COVID19"). Code assumes all (input and output) files are in this folder.
 
 B. Run `ProcessingData` scripts (gather and process input data)
 
