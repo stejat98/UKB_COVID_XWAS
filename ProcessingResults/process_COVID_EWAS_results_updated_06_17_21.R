@@ -263,20 +263,6 @@ dev.off()
 
 #exposure_labels_data <- read.csv("exposure_labels_data_09_15_2021.csv")
 
-
-sigfig <- function(vec, n=3){ 
-  ### function to round values to N significant digits
-  # input:   vec       vector of numeric
-  #          n         integer is the required sigfig  
-  # output:  outvec    vector of numeric rounded to N sigfig
-  
-  formatC(signif(vec,digits=n), digits=n,format="fg", flag="#") 
-  
-} 
-## source: stackoverflow (https://stackoverflow.com/questions/3245862/format-numbers-to-significant-figures-nicely-in-r)
-
-
-
 top_factors_10_pct_plus_health_disease_factors <- exposure_labels_data %>% select(Exposure,Exposure_Name, `RiskRatio`, RR_lower_interv, RR_upper_interv, p.value1, FDR)
 
 top_factors_10_pct <- top_factors_10_pct_plus_health_disease_factors %>% filter(!Exposure %in% subset_health_disease_factors)
