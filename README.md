@@ -1,5 +1,5 @@
 # UKB_COVID_XWAS
-Code to accompany the manuscript "Data-driven prioritization of 360 environmental factors and clinical biomarkers reveals fragility of associations in risk for COVID-19 infection in the UK"
+Code to accompany the manuscript "Data-driven prioritization of 360 environmental factors and clinical biomarkers reveals fragility of associations in risk for COVID-19 infection in the UK". Please look at the Code Overview section below for the order in which scripts should be run to generate key figures.
 
 Please email sivateja_tangirala@hms.harvard.edu with any questions.
 
