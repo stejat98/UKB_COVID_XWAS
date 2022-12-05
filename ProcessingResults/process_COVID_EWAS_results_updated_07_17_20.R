@@ -257,7 +257,7 @@ covid_ewas_07_17_2020_results_filtered_process <- readRDS("covid_positivity_volc
 ## filter out non-FDR significant labels (chronic disease factors) from labels df
 exposure_labels_data <- exposure_labels_data %>% filter(Significance != "FDR > 0.1")
   
-  
+## generate volcano plot viz with different xlim (0.5,1.4)
 pdf("UKB_COVID_XWAS/covid_test_ewas_volcano_plot_zoom_in_07_17_20_updated_05_04_2022.pdf",width=14, height=14)
 ggplot(aes(x= RiskRatio, y = -log10(FDR), col = Significance),data=covid_ewas_07_17_2020_results_filtered_process) + geom_point() + xlim(0.5,1.4) + ylim(0,5) +
   geom_text_repel(aes(RiskRatio, -log10(FDR), label = Exposure_Name),colour = "black",segment.size = 0.1, size = 5, data = exposure_labels_data ) + xlab("RR") + ylab(expression(-log[10](FDR))) + theme_bw()  + theme(legend.position = "none", axis.text = element_text(size = 20), axis.title = element_text(size = 20))
@@ -291,6 +291,8 @@ write_csv(top_factors_10_pct, "UKB_COVID_XWAS/top_factors_10_pct_07_17_20_update
 
 covid_positivity_volcano_plot_df <- readRDS("covid_positivity_volcano_plot_df_07_17_20_updated_05_04_2022.RDS")
 exposure_labels_data <- read_csv("UKB_COVID_XWAS/exposure_labels_data_07_17_20.csv")
+
+## generate volcano plot viz with different xlim (0.5,1.5)
 
 pdf("UKB_COVID_XWAS/covid_test_ewas_volcano_plot_zoom_in_2_07_17_20_updated_05_04_2022.pdf",width=14, height=14)
 ggplot(aes(x= RiskRatio, y = -log10(FDR), col = Significance),data=covid_positivity_volcano_plot_df) + geom_point() + xlim(0.5,1.5) + ylim(0,5) +
