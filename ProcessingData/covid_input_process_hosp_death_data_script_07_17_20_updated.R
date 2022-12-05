@@ -5,6 +5,12 @@
 
 ## assumes all input dfs used for script are in same directory ~/UKB_COVID19/
 
+# setting the working directory to where the input data is stored and data saved to 
+# system("mkdir UKB_COVID19")
+
+setwd('~/UKB_COVID19/')
+
+
 
 
 library(tidyverse)
