@@ -46,7 +46,7 @@ Reproduce Main Figures (run scripts in the same order listed below) :
 4. **Baseline_COVID_EWAS_AutoScript_06_17_21.R**
   * sources Baseline_EWAS_Logistic_Functions_Script.R
 5. **process_COVID_EWAS_results_updated_06_17_21.R**
-
+ 
 ## **Generate Figure 4 (Interaction analysis scatter plot):**
 
 1. **Interaction_exposure_instance_Baseline_COVID_EWAS_AutoScript.R** 
