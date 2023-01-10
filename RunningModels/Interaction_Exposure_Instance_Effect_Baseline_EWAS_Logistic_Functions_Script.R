@@ -2,6 +2,8 @@
 ## 06/17/2021
 ## Baseline Functions (poisson (log link) regression) for interaction models (btwn exposure and timepoint)
 
+## Inspired by chiragjp/xwas
+
 library(tidyverse)
 library(gdata)
 library(RNOmni)
