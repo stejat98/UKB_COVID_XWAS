@@ -2,6 +2,9 @@
 ## 06/17/2021
 ## Baseline Functions (poisson (log link) regression)
 
+## Inspired by chiragjp/xwas
+
+
 library(tidyverse)
 library(gdata)
 library(RNOmni)
