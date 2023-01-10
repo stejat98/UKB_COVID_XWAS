@@ -2,7 +2,8 @@
 ## 06/17/2021
 ## Baseline Functions (poisson (log link) regression) for interaction models (btwn exposure and timepoint)
 
-## Inspired by chiragjp/xwas
+## Inspired by script(s) from github repos chiragjp/xwas and chiragjp/dhs_india/xwas
+
 
 library(tidyverse)
 library(gdata)
